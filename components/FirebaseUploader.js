@@ -52,7 +52,9 @@ export default createUploaderComponent({
           );
 
           // Uploads complete - emit uploaded event with file details
-          emit("uploaded", uploadedFiles);
+          if (uploadedFiles && (uploadedFiles.value.length >= uploadProgressList.value.length)) {
+              emit("uploaded", uploadedFiles);
+          }
         }
       },
       { deep: true }
